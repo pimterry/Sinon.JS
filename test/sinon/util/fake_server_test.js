@@ -176,6 +176,14 @@ buster.testCase("sinon.fakeServer", {
             });
         },
 
+        "handles responding with a 0 status code": function () {
+            this.server.respondWith([0, {}, ""]);
+
+            this.server.respond();
+
+            assert.equals(this.getRootAsync.respond.args[0], [0, {}, ""]);
+        },
+
         "responds to sync request with canned answers": function () {
             this.server.respondWith([210, { "X-Ops": "Yeah" }, "Body, man"]);
 
