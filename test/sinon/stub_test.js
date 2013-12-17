@@ -1091,6 +1091,18 @@ buster.testCase("sinon.stub", {
 
             assert(!callback.called);
         }
+
+
+    },
+
+    "callsArgWithAsync throws an exception if no args are provided": function (done) {
+        var obj = { 'queryDb' : function (x) { } };
+        var stub = sinon.stub(obj, "queryDb")
+        stub.callsArgWithAsync(8);
+
+        obj.queryDb("hello");
+
+        done();
     },
 
     "callsArgOnAsync": {
